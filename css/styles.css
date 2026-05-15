@@ -1,6 +1,7 @@
 :root {
     --primary: #4b6fff;
     --accent: #ff7a59;
+    --logo-red: #e63946;
     --bg: #f5f7fb;
     --text: #1f2933;
 }
@@ -19,27 +20,25 @@ body {
 }
 
 /* ===========================
-   HEADER (CENTERED)
+   HEADER (DESKTOP: CENTER TEXT)
    =========================== */
-/* HEADER */
 header {
     background: #ffffff;
     border-bottom: 1px solid #e1e4f0;
-    padding: 1rem 1.2rem;
+    padding: 0.9rem 1.2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    /* logo left, text centered */
-    position: sticky;
-    top: 0;
+    justify-content: center;
+    position: relative;
     z-index: 10;
 }
 
-/* LOGO LEFT */
+/* LOGO LEFT (DESKTOP) */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .logo-img {
@@ -47,20 +46,16 @@ header {
     width: auto;
 }
 
-/* TEXT CENTERED */
+/* CENTERED TEXT (DESKTOP) */
 .header-center {
-    position: absolute;
-    /* allows true center */
-    left: 50%;
-    transform: translateX(-50%);
     text-align: center;
     line-height: 1.2;
 }
 
 .header-center span:first-child {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    color: #111;
+    color: var(--logo-red);
 }
 
 .header-center span:last-child {
@@ -68,6 +63,41 @@ header {
     color: #555;
 }
 
+/* ===========================
+   MOBILE: LOGO LEFT, TEXT RIGHT
+   =========================== */
+@media (max-width: 600px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.9rem 1rem;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    .header-center {
+        position: static;
+        transform: none;
+        text-align: right;
+    }
+
+    .header-center span:first-child {
+        font-size: 1.25rem;
+    }
+
+    .header-center span:last-child {
+        font-size: 0.85rem;
+    }
+}
 
 /* ===========================
    MAIN CONTENT
@@ -103,8 +133,8 @@ main {
     align-items: center;
     padding: 0.25rem 0.75rem;
     border-radius: 999px;
-    background: rgba(75, 111, 255, 0.08);
-    color: var(--primary);
+    background: rgba(230, 57, 70, 0.08);
+    color: var(--logo-red);
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -161,6 +191,7 @@ main {
     font-size: 1.2rem;
     margin-bottom: 0.6rem;
     font-weight: 700;
+    color: var(--logo-red);
 }
 
 .card p {
@@ -203,6 +234,7 @@ main {
     font-size: 1.3rem;
     margin-bottom: 0.4rem;
     font-weight: 700;
+    color: var(--logo-red);
 }
 
 .contact p {
@@ -242,4 +274,13 @@ footer {
     main {
         padding: 3rem 1.5rem 4rem;
     }
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    color: var(--logo-red);
+    text-align: center;
+    /* <-- center the title */
 }
